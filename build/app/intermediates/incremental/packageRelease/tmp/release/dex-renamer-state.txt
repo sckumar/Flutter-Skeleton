@@ -1,4 +1,4 @@
-#Wed May 08 13:01:58 IST 2024
-base.0=/Users/senthil/Senthil/Flutter/hello_world/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+#Wed May 08 13:34:28 IST 2024
+base.0=/Users/senthil/Senthil/DCX/POC/Flutter-Skeleton/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

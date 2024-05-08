@@ -1,8 +1,8 @@
 <libraries>
   <library
-      name="__local_aars__:/Users/senthil/Senthil/Flutter/hello_world/build/app/intermediates/flutter/release/libs.jar:unspecified@jar"
-      jars="/Users/senthil/Senthil/Flutter/hello_world/build/app/intermediates/flutter/release/libs.jar"
-      resolved="__local_aars__:/Users/senthil/Senthil/Flutter/hello_world/build/app/intermediates/flutter/release/libs.jar:unspecified"/>
+      name="__local_aars__:/Users/senthil/Senthil/DCX/POC/Flutter-Skeleton/build/app/intermediates/flutter/release/libs.jar:unspecified@jar"
+      jars="/Users/senthil/Senthil/DCX/POC/Flutter-Skeleton/build/app/intermediates/flutter/release/libs.jar"
+      resolved="__local_aars__:/Users/senthil/Senthil/DCX/POC/Flutter-Skeleton/build/app/intermediates/flutter/release/libs.jar:unspecified"/>
   <library
       name="io.flutter:flutter_embedding_release:1.0.0-a5c24f538d05aaf66f7972fb23959d8cafb9f95a@jar"
       jars="/Users/senthil/.gradle/caches/modules-2/files-2.1/io.flutter/flutter_embedding_release/1.0.0-a5c24f538d05aaf66f7972fb23959d8cafb9f95a/4b8525987d6d376d3e070a812caa8200bde0154d/flutter_embedding_release-1.0.0-a5c24f538d05aaf66f7972fb23959d8cafb9f95a.jar"
