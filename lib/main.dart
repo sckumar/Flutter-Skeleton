@@ -1,130 +1,197 @@
-import 'package:flutter/material.dart';  
-  
-void main() {  
-  runApp(MyApp());  
-}  
-  
-class MyApp extends StatelessWidget {  
-  @override  
-  Widget build(BuildContext context) {  
-    return MaterialApp(  
-      title: 'Product App',  
-      theme: ThemeData(  
-        primarySwatch: Colors.blue,  
-      ),  
-      home: LoginPage(),  
-    );  
-  }  
-}  
-  
-class LoginPage extends StatelessWidget {  
-  @override  
-  Widget build(BuildContext context) {  
-    return Scaffold(  
-      appBar: AppBar(  
-        title: Text('Login'),  
-      ),  
-      body: Center(  
-        child: ElevatedButton(  
-          onPressed: () {  
-            // Perform login logic here  
-            Navigator.push(  
-              context,  
-              MaterialPageRoute(builder: (context) => ProductListPage()),  
-            );  
-          },  
-          child: Text('Login'),  
-        ),  
-      ),  
-    );  
-  }  
-}  
-  
-class ProductListPage extends StatelessWidget {  
-  final List<Product> products = [  
-    Product(  
-      name: 'Product 1',  
-      description: 'This is the first product.',  
-      price: 9.99,  
-      image: 'assets/product1.png',  
-    ),  
-    Product(  
-      name: 'Product 2',  
-      description: 'This is the second product.',  
-      price: 19.99,  
-      image: 'assets/product2.png',  
-    ),  
-    // Add more products here  
-  ];  
-  
-  @override  
-  Widget build(BuildContext context) {  
-    return Scaffold(  
-      appBar: AppBar(  
-        title: Text('Products'),  
-      ),  
-      body: ListView.builder(  
-        itemCount: products.length,  
-        itemBuilder: (context, index) {  
-          return ListTile(  
-            leading: Image.asset(products[index].image),  
-            title: Text(products[index].name),  
-            subtitle: Text(products[index].description),  
-            trailing: Text('\$${products[index].price.toStringAsFixed(2)}'),  
-            onTap: () {  
-              Navigator.push(  
-                context,  
-                MaterialPageRoute(  
-                  builder: (context) => ProductDetailPage(product: products[index]),  
-                ),  
-              );  
-            },  
-          );  
-        },  
-      ),  
-    );  
-  }  
-}  
-  
-class ProductDetailPage extends StatelessWidget {  
-  final Product product;  
-  
-  ProductDetailPage({required this.product});  
-  
-  @override  
-  Widget build(BuildContext context) {  
-    return Scaffold(  
-      appBar: AppBar(  
-        title: Text(product.name),  
-      ),  
-      body: Center(  
-        child: Column(  
-          mainAxisAlignment: MainAxisAlignment.center,  
-          children: [  
-            Image.asset(product.image),  
-            SizedBox(height: 20),  
-            Text(product.description),  
-            SizedBox(height: 20),  
-            Text('Price: \$${product.price.toStringAsFixed(2)}'),  
-            SizedBox(height: 20),  
-            ElevatedButton(  
-              onPressed: () {  
-                // Perform purchase logic here  
-              },  
-              child: Text('Buy Now'),  
-            ),  
-          ],  
-        ),  
-      ),  
-    );  
-  }  
-}  
-  
-class Product {  
-  final String name;  
-  final String description;  
-  final double price;  
-  final String image;  
-  
-  Product({required this.name, required this.description, required this.price, required this.image});  
-}  
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/createAccount': (context) => AccountCreationPage(),
+        '/productList': (context) => ProductListPage(),
+      },
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Login Page'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: usernameController,
+              decoration: InputDecoration(
+                labelText: 'Username',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: passwordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            RaisedButton(
+              child: Text('Login'),
+              onPressed: () {
+                // Perform login logic here
+                Navigator.pushNamed(context, '/productList');
+              },
+            ),
+            FlatButton(
+              child: Text('Create Account'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/createAccount');
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AccountCreationPage extends StatelessWidget {
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Account Creation Page'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: fullNameController,
+              decoration: InputDecoration(
+                labelText: 'Full Name',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: passwordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: confirmPasswordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'Confirm Password',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            RaisedButton(
+              child: Text('Create Account'),
+              onPressed: () {
+                // Perform account creation logic here
+                Navigator.pushNamed(context, '/productList');
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProductListPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Product List Page'),
+      ),
+      body: ListView(
+        children: [
+          ProductItem(
+            name: 'Product 1',
+            description: 'Product 1 description',
+            image: 'assets/product1.jpg',
+          ),
+          ProductItem(
+            name: 'Product 2',
+            description: 'Product 2 description',
+            image: 'assets/product2.jpg',
+          ),
+          ProductItem(
+            name: 'Product 3',
+            description: 'Product 3 description',
+            image: 'assets/product3.jpg',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProductItem extends StatelessWidget {
+  final String name;
+  final String description;
+  final String image;
+
+  const ProductItem({
+    Key key,
+    this.name,
+    this.description,
+    this.image,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Image.asset(
+        image,
+        width: 50,
+        height: 50,
+      ),
+      title: Text(name),
+      subtitle: Text(description),
+      trailing: RaisedButton(
+        child: Text('Add to Cart'),
+        onPressed: () {
+          // Perform add to cart logic here
+        },
+      ),
+    );
+  }
+}
