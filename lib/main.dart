@@ -21,19 +21,79 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Build your login page UI here
+    // TODO: Implement Login Page UI and Logic
     return Scaffold(
-      body: Center(
-        child: Text('Login Page'),
-      ),
+      body: Center(child: Text('Login Page')),
     );
   }
 }
 
-// Define other pages like ProductListPage, ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, and AdminProductCreationPage here.
+class ProductListPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Implement Product List Page UI and Logic
+    return Scaffold(
+      body: Center(child: Text('Product List Page')),
+    );
+  }
+}
 
-// You can navigate between pages using Navigator.push() and Navigator.pop() methods.
-// For example, to navigate to the ProductListPage from the LoginPage after a successful login, you can use:
-// Navigator.push(context, MaterialPageRoute(builder: (context) => ProductListPage()));
+class ProductDetailsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Implement Product Details Page UI and Logic
+    return Scaffold(
+      body: Center(child: Text('Product Details Page')),
+    );
+  }
+}
 
-// Similarly, you can navigate to other pages as required based on the user's actions.
+class ShoppingCartPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Implement Shopping Cart Page UI and Logic
+    return Scaffold(
+      body: Center(child: Text('Shopping Cart Page')),
+    );
+  }
+}
+
+class CheckoutPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Implement Checkout Page UI and Logic
+    return Scaffold(
+      body: Center(child: Text('Checkout Page')),
+    );
+  }
+}
+
+class OrderConfirmationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Implement Order Confirmation Page UI and Logic
+    return Scaffold(
+      body: Center(child: Text('Order Confirmation Page')),
+    );
+  }
+}
+
+class AccountCreationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Implement Account Creation Page UI and Logic
+    return Scaffold(
+      body: Center(child: Text('Account Creation Page')),
+    );
+  }
+}
+
+class AdminProductCreationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Implement Admin Product Creation Page UI and Logic
+    return Scaffold(
+      body: Center(child: Text('Admin Product Creation Page')),
+    );
+  }
+}
