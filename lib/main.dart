@@ -13,7 +13,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/productList': (context) => ProductListPage(),
+        '/productDetails': (context) => ProductDetailsPage(),
+        '/shoppingCart': (context) => ShoppingCartPage(),
+        '/checkout': (context) => CheckoutPage(),
+        '/orderConfirmation': (context) => OrderConfirmationPage(),
+        '/accountCreation': (context) => AccountCreationPage(),
+        '/adminProductCreation': (context) => AdminProductCreationPage(),
+      },
     );
   }
 }
@@ -21,79 +31,64 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Login Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Login Page')),
-    );
+    // Build your login page UI with username, password fields, and login button
+    // On successful login, navigate to the Product List Page
   }
 }
 
 class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Product List Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Product List Page')),
-    );
+    // Build your product list page UI
+    // On clicking a product, navigate to the Product Details Page
+    // On clicking the cart icon, navigate to the Shopping Cart Page
   }
 }
 
 class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Product Details Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Product Details Page')),
-    );
+    // Build your product details page UI
+    // On clicking the Add to Cart button, add the product to the cart
   }
 }
 
 class ShoppingCartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Shopping Cart Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Shopping Cart Page')),
-    );
+    // Build your shopping cart page UI
+    // On clicking the Remove button, remove the item from the cart
+    // On clicking the Proceed to Checkout button, navigate to the Checkout Page
   }
 }
 
 class CheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Checkout Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Checkout Page')),
-    );
+    // Build your checkout page UI
+    // On clicking the Place Order button, complete the purchase and navigate to the Order Confirmation Page
   }
 }
 
 class OrderConfirmationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Order Confirmation Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Order Confirmation Page')),
-    );
+    // Build your order confirmation page UI
   }
 }
 
 class AccountCreationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Account Creation Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Account Creation Page')),
-    );
+    // Build your account creation page UI
+    // On successful account creation, navigate to the Product List Page
   }
 }
 
 class AdminProductCreationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Admin Product Creation Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Admin Product Creation Page')),
-    );
+    // Build your admin product creation page UI
+    // On successful product creation, navigate to the Product List Page
   }
 }
