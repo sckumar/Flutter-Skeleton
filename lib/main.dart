@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
     // Build your login page UI here
     return Scaffold(
       body: Center(
-        child: Text('Login Page'),
+        child: Text('Login Page Placeholder'),
       ),
     );
   }
@@ -36,7 +36,7 @@ class ProductListPage extends StatelessWidget {
     // Build your product list page UI here
     return Scaffold(
       body: Center(
-        child: Text('Product List Page'),
+        child: Text('Product List Page Placeholder'),
       ),
     );
   }
@@ -48,7 +48,7 @@ class ProductDetailsPage extends StatelessWidget {
     // Build your product details page UI here
     return Scaffold(
       body: Center(
-        child: Text('Product Details Page'),
+        child: Text('Product Details Page Placeholder'),
       ),
     );
   }
@@ -60,7 +60,7 @@ class ShoppingCartPage extends StatelessWidget {
     // Build your shopping cart page UI here
     return Scaffold(
       body: Center(
-        child: Text('Shopping Cart Page'),
+        child: Text('Shopping Cart Page Placeholder'),
       ),
     );
   }
@@ -72,7 +72,7 @@ class CheckoutPage extends StatelessWidget {
     // Build your checkout page UI here
     return Scaffold(
       body: Center(
-        child: Text('Checkout Page'),
+        child: Text('Checkout Page Placeholder'),
       ),
     );
   }
@@ -84,7 +84,7 @@ class OrderConfirmationPage extends StatelessWidget {
     // Build your order confirmation page UI here
     return Scaffold(
       body: Center(
-        child: Text('Order Confirmation Page'),
+        child: Text('Order Confirmation Page Placeholder'),
       ),
     );
   }
@@ -96,7 +96,7 @@ class AccountCreationPage extends StatelessWidget {
     // Build your account creation page UI here
     return Scaffold(
       body: Center(
-        child: Text('Account Creation Page'),
+        child: Text('Account Creation Page Placeholder'),
       ),
     );
   }
@@ -108,7 +108,7 @@ class AdminProductCreationPage extends StatelessWidget {
     // Build your admin product creation page UI here
     return Scaffold(
       body: Center(
-        child: Text('Admin Product Creation Page'),
+        child: Text('Admin Product Creation Page Placeholder'),
       ),
     );
   }
