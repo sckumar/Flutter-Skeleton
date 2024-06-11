@@ -25,100 +25,35 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             TextField(
               decoration: InputDecoration(
                 labelText: 'Username',
-                border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16.0),
             TextField(
-              obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(),
               ),
+              obscureText: true,
             ),
-            SizedBox(height: 24.0),
             ElevatedButton(
-              child: Text('Login'),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProductListPage()),
                 );
               },
+              child: Text('Login'),
             ),
             TextButton(
-              child: Text('Create Account'),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AccountCreationPage()),
-                );
+                // Add navigation to Forgot Password
               },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class AccountCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Create Account'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Full Name',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Confirm Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 24.0),
-            ElevatedButton(
-              child: Text('Create Account'),
-              onPressed: () {
-                // Implement account creation logic
-              },
+              child: Text('Forgot Password?'),
             ),
           ],
         ),
@@ -134,9 +69,15 @@ class ProductListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Product List'),
       ),
-      body: Center(
-        child: Text('Welcome to the Product List!'),
+      body: ListView(
+        children: <Widget>[
+          // Add your product list here
+        ],
       ),
     );
   }
 }
+
+// Continue creating the rest of the pages (ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, AdminProductCreationPage) with similar structures and appropriate elements.
+
+// Remember to add navigation logic and pass necessary data between pages.
