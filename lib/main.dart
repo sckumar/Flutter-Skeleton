@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter E-commerce App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -21,30 +21,70 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Build your login page UI here
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
       body: Center(
-        child: Text('Login Page'),
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 24.0),
+              ElevatedButton(
+                onPressed: () {
+                  // Implement login logic
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProductListPage()),
+                  );
+                },
+                child: Text('Login'),
+              ),
+              TextButton(
+                onPressed: () {
+                  // Implement forgot password logic
+                },
+                child: Text('Forgot Password?'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
 class ProductListPage extends StatelessWidget {
+  // TODO: Implement Product List Page
   @override
   Widget build(BuildContext context) {
-    // Build your product list page UI here
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Product List'),
+      ),
       body: Center(
-        child: Text('Product List Page'),
+        child: Text('Product List Page - To be implemented'),
       ),
     );
   }
 }
 
-// Continue creating classes for ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, and AdminProductCreationPage
+// TODO: Implement ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, AdminProductCreationPage
 
-// You will also need to create navigation logic, for example:
-// Navigator.push(context, MaterialPageRoute(builder: (context) => ProductListPage()));
-
-// And so on for each page redirection...
+// Note: You will need to create separate classes for each page and implement the required functionality.
