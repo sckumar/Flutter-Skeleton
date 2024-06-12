@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Login Page UI and logic
+    // TODO: Implement Login Page UI and Logic
     return Scaffold(
       body: Center(child: Text('Login Page')),
     );
@@ -31,7 +31,7 @@ class LoginPage extends StatelessWidget {
 class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Product List Page UI and logic
+    // TODO: Implement Product List Page UI and Logic
     return Scaffold(
       body: Center(child: Text('Product List Page')),
     );
@@ -41,7 +41,7 @@ class ProductListPage extends StatelessWidget {
 class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Product Details Page UI and logic
+    // TODO: Implement Product Details Page UI and Logic
     return Scaffold(
       body: Center(child: Text('Product Details Page')),
     );
@@ -51,7 +51,7 @@ class ProductDetailsPage extends StatelessWidget {
 class ShoppingCartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Shopping Cart Page UI and logic
+    // TODO: Implement Shopping Cart Page UI and Logic
     return Scaffold(
       body: Center(child: Text('Shopping Cart Page')),
     );
@@ -61,7 +61,7 @@ class ShoppingCartPage extends StatelessWidget {
 class CheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Checkout Page UI and logic
+    // TODO: Implement Checkout Page UI and Logic
     return Scaffold(
       body: Center(child: Text('Checkout Page')),
     );
@@ -71,7 +71,7 @@ class CheckoutPage extends StatelessWidget {
 class OrderConfirmationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Order Confirmation Page UI and logic
+    // TODO: Implement Order Confirmation Page UI and Logic
     return Scaffold(
       body: Center(child: Text('Order Confirmation Page')),
     );
@@ -81,7 +81,7 @@ class OrderConfirmationPage extends StatelessWidget {
 class AccountCreationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Account Creation Page UI and logic
+    // TODO: Implement Account Creation Page UI and Logic
     return Scaffold(
       body: Center(child: Text('Account Creation Page')),
     );
@@ -91,7 +91,7 @@ class AccountCreationPage extends StatelessWidget {
 class AdminProductCreationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Admin Product Creation Page UI and logic
+    // TODO: Implement Admin Product Creation Page UI and Logic
     return Scaffold(
       body: Center(child: Text('Admin Product Creation Page')),
     );
