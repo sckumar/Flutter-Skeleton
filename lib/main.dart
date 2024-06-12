@@ -1,11 +1,66 @@
-(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CheckoutPage()),
-          );
-        },
-        child: Text('Proceed to Checkout'),
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: LoginPage(),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Build your login page UI here
+    return Scaffold(
+      body: Center(
+        child: Text('Login Page'),
+      ),
+    );
+  }
+}
+
+class ProductListPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Build your product list page UI here
+    return Scaffold(
+      body: Center(
+        child: Text('Product List Page'),
+      ),
+    );
+  }
+}
+
+class ProductDetailsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Build your product details page UI here
+    return Scaffold(
+      body: Center(
+        child: Text('Product Details Page'),
+      ),
+    );
+  }
+}
+
+class ShoppingCartPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Build your shopping cart page UI here
+    return Scaffold(
+      body: Center(
+        child: Text('Shopping Cart Page'),
       ),
     );
   }
@@ -14,35 +69,10 @@
 class CheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // This should be replaced with actual checkout data
-    List<Map> checkoutProducts = [
-      {
-        'name': 'Product 1',
-        'quantity': 1,
-        'price': '20.00',
-      },
-      // Add more checkout products here
-    ];
-
+    // Build your checkout page UI here
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Checkout'),
-      ),
-      body: Column(
-        children: <Widget>[
-          // User details form fields
-          // Order summary list
-          // Payment method selection
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => OrderConfirmationPage()),
-              );
-            },
-            child: Text('Place Order'),
-          ),
-        ],
+      body: Center(
+        child: Text('Checkout Page'),
       ),
     );
   }
@@ -51,30 +81,35 @@ class CheckoutPage extends StatelessWidget {
 class OrderConfirmationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // This should be replaced with actual order confirmation data
-    Map orderDetails = {
-      'orderNumber': '123456',
-      'date': '01/01/2021',
-      'totalAmount': '40.00',
-      // Add more order details here
-    };
-
+    // Build your order confirmation page UI here
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Order Confirmation'),
-      ),
-      body: Column(
-        children: <Widget>[
-          Text('Thank you for your purchase!'),
-          // Display order details
-        ],
+      body: Center(
+        child: Text('Order Confirmation Page'),
       ),
     );
   }
 }
 
-// You would also need to create AccountCreationPage and AdminProductCreationPage
-// following the same pattern as above.
+class AccountCreationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Build your account creation page UI here
+    return Scaffold(
+      body: Center(
+        child: Text('Account Creation Page'),
+      ),
+    );
+  }
+}
 
-// Remember to replace placeholder data with actual data and implement the logic
-// for each page, such as form submission, navigation, and state management.
+class AdminProductCreationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Build your admin product creation page UI here
+    return Scaffold(
+      body: Center(
+        child: Text('Admin Product Creation Page'),
+      ),
+    );
+  }
+}
