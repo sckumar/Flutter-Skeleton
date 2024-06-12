@@ -21,79 +21,71 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Login Page UI and Logic
     return Scaffold(
-      body: Center(child: Text('Login Page')),
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 8.0),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 24.0),
+              ElevatedButton(
+                onPressed: () {
+                  // TODO: Implement login logic
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProductListPage()),
+                  );
+                },
+                child: Text('Login'),
+              ),
+              TextButton(
+                onPressed: () {
+                  // TODO: Implement forgot password logic
+                },
+                child: Text('Forgot Password?'),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
 
 class ProductListPage extends StatelessWidget {
+  // TODO: Implement Product List Page
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Product List Page UI and Logic
+    // Placeholder for actual product list
     return Scaffold(
-      body: Center(child: Text('Product List Page')),
+      appBar: AppBar(
+        title: Text('Product List'),
+      ),
+      body: Center(
+        child: Text('List of Products will be displayed here'),
+      ),
     );
   }
 }
 
-class ProductDetailsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Implement Product Details Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Product Details Page')),
-    );
-  }
-}
+// TODO: Implement ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, AdminProductCreationPage
 
-class ShoppingCartPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Implement Shopping Cart Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Shopping Cart Page')),
-    );
-  }
-}
-
-class CheckoutPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Implement Checkout Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Checkout Page')),
-    );
-  }
-}
-
-class OrderConfirmationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Implement Order Confirmation Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Order Confirmation Page')),
-    );
-  }
-}
-
-class AccountCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Implement Account Creation Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Account Creation Page')),
-    );
-  }
-}
-
-class AdminProductCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Implement Admin Product Creation Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Admin Product Creation Page')),
-    );
-  }
-}
+// Note: You would need to create classes for each page similar to the LoginPage and ProductListPage.
