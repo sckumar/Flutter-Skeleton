@@ -22,9 +22,6 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +39,6 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // TODO: Implement login logic
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProductListPage()),
@@ -52,7 +48,7 @@ class LoginPage extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                // TODO: Implement forgot password logic
+                // Forgot password link action
               },
               child: Text('Forgot Password?'),
             ),
@@ -66,20 +62,51 @@ class LoginPage extends StatelessWidget {
 class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement product list logic
+    // This should be replaced with actual product data
+    final List<Map> products = [
+      {
+        'name': 'Product 1',
+        'image': 'assets/product1.png',
+        'description': 'This is product 1',
+      },
+      // Add more products here
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Product List'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShoppingCartPage()),
+              );
+            },
+          ),
+        ],
       ),
-      body: Center(
-        child: Text('List of Products'),
+      body: ListView.builder(
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.asset(products[index]['image']),
+            title: Text(products[index]['name']),
+            subtitle: Text(products[index]['description']),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductDetailsPage()),
+              );
+            },
+          );
+        },
       ),
     );
   }
 }
 
-// TODO: Implement ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, AdminProductCreationPage
+// Define other pages like ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, and AdminProductCreationPage similarly.
 
-// You would continue creating classes for each page following the pattern above.
-// Each class would be a StatelessWidget or StatefulWidget depending on your needs.
-// You would use Navigator.push to move between pages.
+// Remember to replace placeholders with actual data and logic.
