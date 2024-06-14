@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Build your login page UI here
+    // Login Page UI and Logic
     return Scaffold(
       body: Center(
         child: Text('Login Page'),
@@ -30,8 +30,86 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-// Define other pages like ProductListPage, ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, AdminProductCreationPage here
+class ProductListPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Product List Page UI and Logic
+    return Scaffold(
+      body: Center(
+        child: Text('Product List Page'),
+      ),
+    );
+  }
+}
 
-// You can use Navigator.push() to navigate to different pages on button click
-// For example:
-// Navigator.push(context, MaterialPageRoute(builder: (context) => ProductListPage()));
+class ProductDetailsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Product Details Page UI and Logic
+    return Scaffold(
+      body: Center(
+        child: Text('Product Details Page'),
+      ),
+    );
+  }
+}
+
+class ShoppingCartPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Shopping Cart Page UI and Logic
+    return Scaffold(
+      body: Center(
+        child: Text('Shopping Cart Page'),
+      ),
+    );
+  }
+}
+
+class CheckoutPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Checkout Page UI and Logic
+    return Scaffold(
+      body: Center(
+        child: Text('Checkout Page'),
+      ),
+    );
+  }
+}
+
+class OrderConfirmationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Order Confirmation Page UI and Logic
+    return Scaffold(
+      body: Center(
+        child: Text('Order Confirmation Page'),
+      ),
+    );
+  }
+}
+
+class AccountCreationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Account Creation Page UI and Logic
+    return Scaffold(
+      body: Center(
+        child: Text('Account Creation Page'),
+      ),
+    );
+  }
+}
+
+class AdminProductCreationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Admin Product Creation Page UI and Logic
+    return Scaffold(
+      body: Center(
+        child: Text('Admin Product Creation Page'),
+      ),
+    );
+  }
+}
