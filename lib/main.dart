@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter E-commerce App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -18,34 +18,70 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// Define all your pages here...
+
+// LoginPage
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Login Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Login Page')),
-    );
+    // Implement your login UI here
   }
 }
 
+// ProductListPage
 class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Product List Page UI and Logic
-    return Scaffold(
-      body: Center(child: Text('Product List Page')),
-    );
+    // Implement your product list UI here
   }
 }
 
-// Add other pages like ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, AdminProductCreationPage
+// ProductDetailsPage
+class ProductDetailsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement your product details UI here
+  }
+}
 
-// You would also need to create models for your products, cart items, etc.
+// ShoppingCartPage
+class ShoppingCartPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement your shopping cart UI here
+  }
+}
 
-// For navigation, you would use Navigator.push() and Navigator.pop() methods to move between pages.
+// CheckoutPage
+class CheckoutPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement your checkout UI here
+  }
+}
 
-// For state management, you might consider using Provider, Bloc, or any other state management solution to handle the app's state.
+// OrderConfirmationPage
+class OrderConfirmationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement your order confirmation UI here
+  }
+}
 
-// For the database, you might use SQLite or a cloud solution like Firebase to store your data.
+// AccountCreationPage
+class AccountCreationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement your account creation UI here
+  }
+}
 
-// For image uploading, you might use packages like image_picker and firebase_storage.
+// AdminProductCreationPage
+class AdminProductCreationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement your admin product creation UI here
+  }
+}
+
+// Add navigation and other functionalities as needed...
