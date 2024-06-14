@@ -21,11 +21,9 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Login Page UI and Logic
+    // TODO: Implement Login Page UI and Logic
     return Scaffold(
-      body: Center(
-        child: Text('Login Page'),
-      ),
+      body: Center(child: Text('Login Page')),
     );
   }
 }
@@ -33,83 +31,21 @@ class LoginPage extends StatelessWidget {
 class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Product List Page UI and Logic
+    // TODO: Implement Product List Page UI and Logic
     return Scaffold(
-      body: Center(
-        child: Text('Product List Page'),
-      ),
+      body: Center(child: Text('Product List Page')),
     );
   }
 }
 
-class ProductDetailsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Product Details Page UI and Logic
-    return Scaffold(
-      body: Center(
-        child: Text('Product Details Page'),
-      ),
-    );
-  }
-}
+// Add other pages like ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, AdminProductCreationPage
 
-class ShoppingCartPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Shopping Cart Page UI and Logic
-    return Scaffold(
-      body: Center(
-        child: Text('Shopping Cart Page'),
-      ),
-    );
-  }
-}
+// You would also need to create models for your products, cart items, etc.
 
-class CheckoutPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Checkout Page UI and Logic
-    return Scaffold(
-      body: Center(
-        child: Text('Checkout Page'),
-      ),
-    );
-  }
-}
+// For navigation, you would use Navigator.push() and Navigator.pop() methods to move between pages.
 
-class OrderConfirmationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Order Confirmation Page UI and Logic
-    return Scaffold(
-      body: Center(
-        child: Text('Order Confirmation Page'),
-      ),
-    );
-  }
-}
+// For state management, you might consider using Provider, Bloc, or any other state management solution to handle the app's state.
 
-class AccountCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Account Creation Page UI and Logic
-    return Scaffold(
-      body: Center(
-        child: Text('Account Creation Page'),
-      ),
-    );
-  }
-}
+// For the database, you might use SQLite or a cloud solution like Firebase to store your data.
 
-class AdminProductCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Admin Product Creation Page UI and Logic
-    return Scaffold(
-      body: Center(
-        child: Text('Admin Product Creation Page'),
-      ),
-    );
-  }
-}
+// For image uploading, you might use packages like image_picker and firebase_storage.
