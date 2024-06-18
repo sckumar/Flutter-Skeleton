@@ -54,7 +54,7 @@ jobs:
     
     # Upload artifact to app center
     - name: upload artifact to App Center
-      uses: senthilkumar_cg/App-Center-action@v1.0.2
+      uses: actions/App-Center-action@v1.0.2
       with:
         command: appcenter distribute stores publish -s Beta -f build/app/outputs/apk/release/app-release.apk
         token: 'd5f37c739cc130e16754f95757afac65b39a0da4'
