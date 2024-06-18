@@ -57,7 +57,7 @@ jobs:
       uses: wzieba/AppCenter-Github-Action@v1
       with:
         appName: senthilkumar_cg/SDLC
-        token: 'd5f37c739cc130e16754f95757afac65b39a0da4'
+        token: ${{secrets.APP_CENTER_TOKEN}}
         group: Developers
         file: build/app/outputs/apk/release/app-release.apk
         notifyTesters: true
