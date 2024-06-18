@@ -53,8 +53,12 @@ jobs:
         path: build/app/outputs/apk/release/app-release.apk
     
     # Upload artifact to app center
-    - name: upload artifact to App Center
-      uses: avocaddo/App-Center-action@v1.0.2
+    - name: upload artefact to App Center
+      uses: senthilkumar_cg/AppCenter-Github-Action@v1
       with:
-        command: appcenter distribute stores publish -s Beta -f build/app/outputs/apk/release/app-release.apk
+        appName: senthilkumar_cg/SDLC
         token: 'd5f37c739cc130e16754f95757afac65b39a0da4'
+        group: Developers
+        file: build/app/outputs/apk/release/app-release.apk
+        notifyTesters: true
+        debug: false
