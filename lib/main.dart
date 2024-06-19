@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shopping Cart',
+      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -21,9 +21,43 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Login Page UI and Logic
     return Scaffold(
-      body: Center(child: Text('Login Page')),
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Username',
+              ),
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
+              obscureText: true,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductListPage()),
+                );
+              },
+              child: Text('Login'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Add navigation to Forgot Password
+              },
+              child: Text('Forgot Password?'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -31,21 +65,30 @@ class LoginPage extends StatelessWidget {
 class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Product List Page UI and Logic
+    // This should be replaced with actual product data
+    final List<Map> products = [
+      {'name': 'Product 1', 'description': 'This is product 1'},
+      // Add more products here
+    ];
+
     return Scaffold(
-      body: Center(child: Text('Product List Page')),
+      appBar: AppBar(
+        title: Text('Product List'),
+      ),
+      body: ListView.builder(
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(products[index]['name']),
+            subtitle: Text(products[index]['description']),
+            onTap: () {
+              // Add navigation to Product Details
+            },
+          );
+        },
+      ),
     );
   }
 }
 
-// Add other pages like ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, AdminProductCreationPage
-
-// You would also need to create models for your products, cart items, etc.
-
-// For navigation, you would use Navigator.push() and Navigator.pop() methods to move between pages.
-
-// For state management, you might consider using Provider, Bloc, or any other state management solution to handle the application state.
-
-// For the UI, you would use various Flutter widgets like TextFormField for input fields, ElevatedButton for buttons, ListView for lists, etc.
-
-// For the design, you would customize your widgets using properties like color, padding, margin, decoration, etc.
+// Add ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, and AdminProductCreationPage here
