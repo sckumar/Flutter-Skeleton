@@ -22,7 +22,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -69,15 +71,28 @@ class LoginPage extends StatelessWidget {
 
 class ProductListPage extends StatelessWidget {
   final List<Product> products = [
-    Product('Product 1', 'assets/product1.png', 'Description 1', 10.0),
-    Product('Product 2', 'assets/product2.png', 'Description 2', 20.0),
+    Product('Product 1', 'assets/product1.png', 'This is product 1 description', 10.0),
+    Product('Product 2', 'assets/product2.png', 'This is product 2 description', 20.0),
     // Add more products as needed
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Product List')),
+      appBar: AppBar(
+        title: Text('Product List'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShoppingCartPage()),
+              );
+            },
+          ),
+        ],
+      ),
       body: ListView.builder(
         itemCount: products.length,
         itemBuilder: (context, index) {
@@ -86,18 +101,10 @@ class ProductListPage extends StatelessWidget {
             leading: Image.asset(product.image),
             title: Text(product.name),
             subtitle: Text(product.description),
-            trailing: IconButton(
-              icon: Icon(Icons.add_shopping_cart),
-              onPressed: () {
-                // Add to cart functionality
-              },
-            ),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => ProductDetailsPage(product: product),
-                ),
+                MaterialPageRoute(builder: (context) => ProductDetailsPage(product: product)),
               );
             },
           );
@@ -115,7 +122,9 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(product.name)),
+      appBar: AppBar(
+        title: Text(product.name),
+      ),
       body: Column(
         children: <Widget>[
           Image.asset(product.image),
@@ -125,6 +134,10 @@ class ProductDetailsPage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               // Add to cart functionality
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShoppingCartPage()),
+              );
             },
             child: Text('Add to Cart'),
           ),
@@ -135,15 +148,18 @@ class ProductDetailsPage extends StatelessWidget {
 }
 
 class ShoppingCartPage extends StatelessWidget {
+  // This would be your cart data
   final List<CartItem> cartItems = [
-    CartItem(Product('Product 1', 'assets/product1.png', 'Description 1', 10.0), 1),
+    CartItem(Product('Product 1', 'assets/product1.png', 'This is product 1 description', 10.0), 1),
     // Add more cart items as needed
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Shopping Cart')),
+      appBar: AppBar(
+        title: Text('Shopping Cart'),
+      ),
       body: ListView.builder(
         itemCount: cartItems.length,
         itemBuilder: (context, index) {
@@ -152,7 +168,7 @@ class ShoppingCartPage extends StatelessWidget {
             leading: Image.asset(cartItem.product.image),
             title: Text(cartItem.product.name),
             subtitle: Text('Quantity: ${cartItem.quantity}'),
-            trailing: Text('\$${cartItem.product.price * cartItem.quantity}'),
+            trailing: Text('Total: \$${cartItem.quantity * cartItem.product.price}'),
             onTap: () {
               // Remove from cart functionality
             },
@@ -168,154 +184,115 @@ class ShoppingCartPage extends StatelessWidget {
         },
         child: Text('Proceed to Checkout'),
       ),
-    );
+     );
   }
 }
 
 class CheckoutPage extends StatelessWidget {
+  // This would be your checkout data
+  final List<CartItem> cartItems = [
+    CartItem(Product('Product 1', 'assets/product1.png', 'This is product 1 description', 10.0), 1),
+    // Add more cart items as needed
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Checkout')),
-      body: Column(
-        children: <Widget>[
-          // User details form
-          // Order summary
-          // Payment methodselection
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => OrderConfirmationPage()),
-              );
-            },
-            child: Text('Place Order'),
+      appBar: AppBar(
+        title: Text('Checkout'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('User Details', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              // Replace with actual user details
+              Text('Name: John Doe'),
+              Text('Address: 123 Flutter St'),
+              Text('Contact: 123-456-7890'),
+              SizedBox(height: 24),
+              Text('Order Summary', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: cartItems.length,
+                itemBuilder: (context, index) {
+                  final cartItem = cartItems[index];
+                  return ListTile(
+                    leading: Image.asset(cartItem.product.image),
+                    title: Text(cartItem.product.name),
+                    subtitle: Text('Quantity: ${cartItem.quantity}'),
+                    trailing: Text('Total: \$${cartItem.quantity * cartItem.product.price}'),
+                  );
+                },
+              ),
+              SizedBox(height: 24),
+              Text('Payment Method', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              // Implement payment method selection
+              SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OrderConfirmationPage()),
+                  );
+                },
+                child: Text('Place Order'),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
 class OrderConfirmationPage extends StatelessWidget {
+  // This would be your order details
+  final String orderNumber = '123456';
+  final DateTime orderDate = DateTime.now();
+  final List<CartItem> orderedItems = [
+    CartItem(Product('Product 1', 'assets/product1.png', 'This is product 1 description', 10.0), 1),
+    // Add more ordered items as needed
+  ];
+  final double totalAmount = 10.0; // Calculate total amount
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Order Confirmation')),
-      body: Center(
+      appBar: AppBar(
+        title: Text('Order Confirmation'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Thank you for your order!'),
-            // Display order details
+            Text('Thank you for your order!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            SizedBox(height: 16),
+            Text('Order Number: $orderNumber'),
+            Text('Order Date: ${orderDate.toString()}'),
+            SizedBox(height: 16),
+            Text('Order Details', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: orderedItems.length,
+              itemBuilder: (context, index) {
+                final orderedItem = orderedItems[index];
+                return ListTile(
+                  leading: Image.asset(orderedItem.product.image),
+                  title: Text(orderedItem.product.name),
+                  subtitle: Text('Quantity: ${orderedItem.quantity}'),
+                  trailing: Text('Total: \$${orderedItem.quantity * orderedItem.product.price}'),
+                );
+              },
+            ),
+            SizedBox(height: 16),
+            Text('Total Amount: \$${totalAmount.toStringAsFixed(2)}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class AccountCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Create Account')),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 16),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProductListPage()),
-                  );
-                },
-                child: Text('Create Account'),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class AdminProductCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Create Product')),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Product Name',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 16),
-              // Image upload functionality would go here
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Description',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Price',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProductListPage()),
-                  );
-                },
-                child: Text('Create Product'),
-              ),
-            ],
-          ),
         ),
       ),
     );
