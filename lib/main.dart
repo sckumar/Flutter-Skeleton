@@ -54,7 +54,7 @@ class LoginPage extends StatelessWidget {
             ElevatedButton(
               child: Text('Login'),
               onPressed: () {
-                if (_usernameController.text == 'admin' && _passwordController.text == 'admin') {
+                if (_usernameController.text == 'user' && _passwordController.text == 'pass') {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ProductListPage()),
@@ -71,7 +71,7 @@ class LoginPage extends StatelessWidget {
             TextButton(
               child: Text('Forgot Password?'),
               onPressed: () {
-                // Implement forgot password functionality
+                // Handle forgot password
               },
             ),
           ],
