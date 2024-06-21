@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            TextField(
+            TextFormField(
               controller: _usernameController,
               decoration: InputDecoration(
                 labelText: 'Username',
@@ -42,7 +42,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16.0),
-            TextField(
+            TextFormField(
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
@@ -54,15 +54,27 @@ class LoginPage extends StatelessWidget {
             ElevatedButton(
               child: Text('Login'),
               onPressed: () {
+                // Simulate a login
                 if (_usernameController.text == 'user' && _passwordController.text == 'pass') {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => ProductListPage()),
                   );
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                  // Show error message
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('Error'),
                       content: Text('Invalid username or password'),
+                      actions: <Widget>[
+                        TextButton(
+                          child: Text('Close'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
                     ),
                   );
                 }
