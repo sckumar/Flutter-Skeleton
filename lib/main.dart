@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './apptheme.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,60 +8,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< Updated upstream
-      title: 'Flutter Login Demo',
+      title: 'Flutter E-commerce App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-=======
-      title: 'Flutter E-commerce App',
-      theme: AppTheme.getThemeData(),
->>>>>>> Stashed changes
       home: LoginPage(),
     );
   }
 }
 
 class LoginPage extends StatelessWidget {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< Updated upstream
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(
-                labelText: 'Username',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 24.0),
-            ElevatedButton(
-              child: Text('Login'),
-              onPressed: () {
-                if (_usernameController.text == 'admin' && _passwordController.text == 'admin') {
-=======
       appBar: AppBar(title: Text('Login')),
       body: Center(
         child: Padding(
@@ -87,29 +46,10 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
->>>>>>> Stashed changes
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ProductListPage()),
                   );
-<<<<<<< Updated upstream
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Invalid username or password'),
-                    ),
-                  );
-                }
-              },
-            ),
-            TextButton(
-              child: Text('Forgot Password?'),
-              onPressed: () {
-                // Implement forgot password functionality
-              },
-            ),
-          ],
-=======
                 },
                 child: Text('Login'),
               ),
@@ -121,7 +61,6 @@ class LoginPage extends StatelessWidget {
               ),
             ],
           ),
->>>>>>> Stashed changes
         ),
       ),
     );
@@ -130,8 +69,11 @@ class LoginPage extends StatelessWidget {
 
 class ProductListPage extends StatelessWidget {
   final List<Product> products = [
-    Product('Product 1', 'assets/product1.png', 'Description of product 1', 10.0),
-    Product('Product 2', 'assets/product2.png', 'Description of product 2', 15.0),
+    Product('Product 1', 'assets/1.png', 'Description of product 1', 10.0),
+    Product('Product 2', 'assets/2.png', 'Description of product 2', 15.0),
+    Product('Product 1', 'assets/1.png', 'Description of product 3', 13.0),
+    Product('Product 2', 'assets/2.png', 'Description of product 4', 16.0),
+
     // Add more products as needed
   ];
 
@@ -140,14 +82,6 @@ class ProductListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Product List'),
-<<<<<<< Updated upstream
-      ),
-      body: Center(
-        child: Text('Welcome to the Product List!'),
-      ),
-    );
-  }
-=======
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -565,5 +499,4 @@ class OrderedProduct {
   final int quantity;
 
   OrderedProduct(this.product, this.quantity);
->>>>>>> Stashed changes
 }
