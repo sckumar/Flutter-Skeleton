@@ -21,55 +21,92 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Build your login page UI here
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Username',
+              ),
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
+              obscureText: true,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductListPage()),
+                );
+              },
+              child: Text('Login'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Forgot password link action
+              },
+              child: Text('Forgot Password?'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
 class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Build your product list page UI here
+    // This should be replaced with actual product data
+    final List<Map> products = [
+      {
+        'name': 'Product 1',
+        'image': 'assets/product1.png',
+        'description': 'This is product 1',
+      },
+      // Add more products here
+    ];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Product List'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShoppingCartPage()),
+              );
+            },
+          ),
+        ],
+      ),
+      body: ListView.builder(
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.asset(products[index]['image']),
+            title: Text(products[index]['name']),
+            subtitle: Text(products[index]['description']),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductDetailsPage()),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 }
 
-class ProductDetailsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Build your product details page UI here
-  }
-}
+// Define other pages like ProductDetailsPage, ShoppingCartPage, CheckoutPage, OrderConfirmationPage, AccountCreationPage, and AdminProductCreationPage similarly.
 
-class ShoppingCartPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Build your shopping cart page UI here
-  }
-}
-
-class CheckoutPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Build your checkout page UI here
-  }
-}
-
-class OrderConfirmationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Build your order confirmation page UI here
-  }
-}
-
-class AccountCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Build your account creation page UI here
-  }
-}
-
-class AdminProductCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Build your admin product creation page UI here
-  }
-}
+// Remember to replace placeholders with actual data and logic.
