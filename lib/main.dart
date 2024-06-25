@@ -71,12 +71,8 @@ class ProductListPage extends StatelessWidget {
   final List<Product> products = [
     Product('Product 1', 'assets/1.jpg', 'This is product 1 description', 10.0),
     Product('Product 2', 'assets/2.jpg', 'This is product 2 description', 20.0),
-    Product('Product 3', 'assets/3.jpg', 'This is product 1 description', 10.0),
-    Product('Product 4', 'assets/4.jpg', 'This is product 2 description', 20.0),
-    Product('Product 3', 'assets/3.jpg', 'This is product 1 description', 10.0),
-    Product('Product 4', 'assets/4.jpg', 'This is product 2 description', 20.0),
-    Product('Product 3', 'assets/3.jpg', 'This is product 1 description', 10.0),
-    Product('Product 4', 'assets/4.jpg', 'This is product 2 description', 20.0),
+    Product('Product 1', 'assets/3.jpg', 'This is product 1 description', 10.0),
+    Product('Product 2', 'assets/4.jpg', 'This is product 2 description', 20.0),
     // Add more products here
   ];
 
