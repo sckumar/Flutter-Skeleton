@@ -9,61 +9,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< Updated upstream
-      title: 'Flutter Login Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-=======
       title: 'Flutter E-commerce App',
-      theme: AppTheme.getThemeData(),
->>>>>>> Stashed changes
+      theme: myTheme,
       home: LoginPage(),
     );
   }
 }
 
 class LoginPage extends StatelessWidget {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< Updated upstream
       appBar: AppBar(
         title: Text('Login'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(
-                labelText: 'Username',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 24.0),
-            ElevatedButton(
-              child: Text('Login'),
-              onPressed: () {
-                if (_usernameController.text == 'admin' && _passwordController.text == 'admin') {
-=======
-      appBar: AppBar(title: Text('Login')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -87,29 +46,10 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
->>>>>>> Stashed changes
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => ProductListPage()),
                   );
-<<<<<<< Updated upstream
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Invalid username or password'),
-                    ),
-                  );
-                }
-              },
-            ),
-            TextButton(
-              child: Text('Forgot Password?'),
-              onPressed: () {
-                // Implement forgot password functionality
-              },
-            ),
-          ],
-=======
                 },
                 child: Text('Login'),
               ),
@@ -121,7 +61,6 @@ class LoginPage extends StatelessWidget {
               ),
             ],
           ),
->>>>>>> Stashed changes
         ),
       ),
     );
@@ -130,9 +69,15 @@ class LoginPage extends StatelessWidget {
 
 class ProductListPage extends StatelessWidget {
   final List<Product> products = [
-    Product('Product 1', 'assets/product1.png', 'Description of product 1', 10.0),
-    Product('Product 2', 'assets/product2.png', 'Description of product 2', 15.0),
-    // Add more products as needed
+    Product('Product 1', 'assets/1.jpg', 'This is product 1 description', 10.0),
+    Product('Product 2', 'assets/2.jpg', 'This is product 2 description', 20.0),
+    Product('Product 3', 'assets/3.jpg', 'This is product 1 description', 10.0),
+    Product('Product 4', 'assets/4.jpg', 'This is product 2 description', 20.0),
+    Product('Product 3', 'assets/3.jpg', 'This is product 1 description', 10.0),
+    Product('Product 4', 'assets/4.jpg', 'This is product 2 description', 20.0),
+    Product('Product 3', 'assets/3.jpg', 'This is product 1 description', 10.0),
+    Product('Product 4', 'assets/4.jpg', 'This is product 2 description', 20.0),
+    // Add more products here
   ];
 
   @override
@@ -140,14 +85,6 @@ class ProductListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Product List'),
-<<<<<<< Updated upstream
-      ),
-      body: Center(
-        child: Text('Welcome to the Product List!'),
-      ),
-    );
-  }
-=======
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -167,12 +104,6 @@ class ProductListPage extends StatelessWidget {
             leading: Image.asset(products[index].image),
             title: Text(products[index].name),
             subtitle: Text(products[index].description),
-            trailing: ElevatedButton(
-              onPressed: () {
-                // Add to cart functionality
-              },
-              child: Text('Add to Cart'),
-            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -181,6 +112,12 @@ class ProductListPage extends StatelessWidget {
                 ),
               );
             },
+            trailing: ElevatedButton(
+              onPressed: () {
+                // Add to cart functionality
+              },
+              child: Text('Add to Cart'),
+            ),
           );
         },
       ),
@@ -196,7 +133,9 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(product.name)),
+      appBar: AppBar(
+        title: Text(product.name),
+      ),
       body: Column(
         children: <Widget>[
           Image.asset(product.image),
@@ -218,15 +157,16 @@ class ProductDetailsPage extends StatelessWidget {
 class ShoppingCartPage extends StatelessWidget {
   // This should be your cart data
   final List<CartItem> cartItems = [
-    CartItem(Product('Product 1', 'assets/product1.png', 'Description of product 1', 10.0), 1),
-    CartItem(Product('Product 2', 'assets/product2.png', 'Description of product 2', 15.0), 2),
-    // Add more cart items as needed
+    CartItem(Product('Product 1', 'assets/product1.png', 'This is product 1 description', 10.0), 1),
+    // Add more cart items here
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Shopping Cart')),
+      appBar: AppBar(
+        title: Text('Shopping Cart'),
+      ),
       body: ListView.builder(
         itemCount: cartItems.length,
         itemBuilder: (context, index) {
@@ -235,9 +175,14 @@ class ShoppingCartPage extends StatelessWidget {
             title: Text(cartItems[index].product.name),
             subtitle: Text('Quantity: ${cartItems[index].quantity}'),
             trailing: Text('\$${(cartItems[index].product.price * cartItems[index].quantity).toString()}'),
+            isThreeLine: true,
+            dense: true,
+            contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             onTap: () {
-              // Removefrom cart functionality
-              // You would typically call a function here to remove the item from the cart
+              // This could show more details or edit the quantity
+            },
+            onLongPress: () {
+              // Remove item from cart functionality
             },
           );
         },
@@ -248,9 +193,9 @@ class ShoppingCartPage extends StatelessWidget {
           children: <Widget>[
             TextButton(
               onPressed: () {
-                // Implement remove all functionality
+                // Remove all items from cart functionality
               },
-              child: Text('Remove All'),
+              child: Text('Clear Cart'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -273,91 +218,80 @@ class CheckoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // This should be your checkout data
     final List<CartItem> checkoutItems = [
-      CartItem(Product('Product 1', 'assets/product1.png', 'Description of product 1', 10.0), 1),
-      CartItem(Product('Product 2', 'assets/product2.png', 'Description of product 2', 15.0), 2),
-      // Add more checkout items as needed
+      CartItem(Product('Product 1', 'assets/product1.png', 'This is product 1 description', 10.0), 1),
+      // Add more checkout items here
     ];
 
     return Scaffold(
-      appBar: AppBar(title: Text('Checkout')),
+      appBar: AppBar(
+        title: Text('Checkout'),
+      ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              // User details form
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                ),
+        child: Column(
+          children: <Widget>[
+            // User details form
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Name',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Address',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Contact Information',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Address',
-                  border: OutlineInputBorder(),
-                ),
+            ),
+            // Order summary
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: checkoutItems.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: Image.asset(checkoutItems[index].product.image),
+                  title: Text(checkoutItems[index].product.name),
+                  subtitle: Text('Quantity: ${checkoutItems[index].quantity}'),
+                  trailing: Text('\$${(checkoutItems[index].product.price * checkoutItems[index].quantity).toString()}'),
+                );
+              },
+            ),
+            // Payment method selection
+            // For simplicity, we're not implementing actual payment method selection
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: <Widget>[
+                  Text('Select Payment Method', style: TextStyle(fontSize: 18)),
+                  // Add payment method selection here
+                ],
               ),
-              SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Contact Information',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 24),
-              // Order summary
-              Text('Order Summary', style: TextStyle(fontSize: 20)),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: checkoutItems.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Image.asset(checkoutItems[index].product.image),
-                    title: Text(checkoutItems[index].product.name),
-                    subtitle: Text('Quantity: ${checkoutItems[index].quantity}'),
-                    trailing: Text('\$${(checkoutItems[index].product.price * checkoutItems[index].quantity).toString()}'),
-                  );
-                },
-              ),
-              SizedBox(height: 24),
-              // Payment method selection
-              // For simplicity, we're not implementing actual payment methods here
-              Text('Payment Method', style: TextStyle(fontSize: 20)),
-              ListTile(
-                title: Text('Credit Card'),
-                leading: Radio(
-                  value: 'CreditCard',
-                  groupValue: 'PaymentMethod',
-                  onChanged: (value) {
-                    // Handle payment method change
-                  },
-                ),
-              ),
-              ListTile(
-                title: Text('PayPal'),
-                leading: Radio(
-                  value: 'PayPal',
-                  groupValue: 'PaymentMethod',
-                  onChanged: (value) {
-                    // Handle payment method change
-                  },
-                ),
-              ),
-              SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderConfirmationPage()),
-                  );
-                },
-                child: Text('Place Order'),
-              ),
-            ],
-          ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OrderConfirmationPage()),
+                );
+              },
+              child: Text('Place Order'),
+            ),
+          ],
         ),
       ),
     );
@@ -370,17 +304,18 @@ class OrderConfirmationPage extends StatelessWidget {
     // This should be your order details
     final orderDetails = OrderDetails(
       orderNumber: '123456',
-      orderDate: DateTime.now(),
+      date: DateTime.now(),
       orderedProducts: [
-        OrderedProduct(Product('Product 1', 'assets/product1.png', 'Description of product 1', 10.0), 1),
-        OrderedProduct(Product('Product 2', 'assets/product2.png', 'Description of product 2', 15.0), 2),
-        // Add more ordered products as needed
+        OrderedProduct(Product('Product 1', 'assets/product1.png', 'This is product 1 description', 10.0), 1),
+        // Add more ordered products here
       ],
-      totalAmount: 40.0,
+      totalAmount: 10.0,
     );
 
     return Scaffold(
-      appBar: AppBar(title: Text('Order Confirmation')),
+      appBar: AppBar(
+        title: Text('Order Confirmation'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -389,9 +324,7 @@ class OrderConfirmationPage extends StatelessWidget {
             Text('Thank you for your purchase!', style: TextStyle(fontSize: 24)),
             SizedBox(height: 16),
             Text('Order Number: ${orderDetails.orderNumber}'),
-            Text('Order Date: ${orderDetails.orderDate}'),
-            SizedBox(height: 16),
-            Text('Order Details:', style: TextStyle(fontSize: 20)),
+            Text('Order Date: ${orderDetails.date.toString()}'),
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -405,8 +338,7 @@ class OrderConfirmationPage extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 16),
-            Text('Total Amount: \$${orderDetails.totalAmount.toString()}', style: TextStyle(fontSize: 20)),
+            Text('Total Amount: \$${orderDetails.totalAmount.toString()}'),
           ],
         ),
       ),
@@ -418,53 +350,53 @@ class AccountCreationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Create Account')),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                ),
+      appBar: AppBar(
+        title: Text('Create Account'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Username',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 16),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
+            ),
+            SizedBox(height: 16),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
+            ),
+            SizedBox(height: 16),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                ),
+            ),
+            SizedBox(height: 16),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Name',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProductListPage()),
-                  );
-                },
-                child: Text('Create Account'),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductListPage()),
+                );
+              },
+              child: Text('Create Account'),
+            ),
+          ],
         ),
       ),
     );
@@ -475,61 +407,53 @@ class AdminProductCreationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Create Product')),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Product Name',
-                  border: OutlineInputBorder(),
-                ),
+      appBar: AppBar(
+        title: Text('Create Product'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Product Name',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 16),
-              // Image upload would be handled here
-              // For simplicity, we're just using a placeholder
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Image URL',
-                  border: OutlineInputBorder(),
-                ),
+            ),
+            SizedBox(height: 16),
+            // Image upload field would require integration with image picker and backend
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Description',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Description',
-                  border: OutlineInputBorder(),
-                ),
+            ),
+            SizedBox(height: 16),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Price',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 16),
-              TextField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Price',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProductListPage()),
-                  );
-                },
-                child: Text('Create Product'),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductListPage()),
+                );
+              },
+              child: Text('Create Product'),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-// Models for simplicity
+// Mock data models
 class Product {
   final String name;
   final String image;
@@ -548,13 +472,13 @@ class CartItem {
 
 class OrderDetails {
   final String orderNumber;
-  final DateTime orderDate;
+  final DateTime date;
   final List<OrderedProduct> orderedProducts;
   final double totalAmount;
 
   OrderDetails({
     required this.orderNumber,
-    required this.orderDate,
+    required this.date,
     required this.orderedProducts,
     required this.totalAmount,
   });
@@ -565,5 +489,4 @@ class OrderedProduct {
   final int quantity;
 
   OrderedProduct(this.product, this.quantity);
->>>>>>> Stashed changes
 }
