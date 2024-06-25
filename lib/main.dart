@@ -486,3 +486,4 @@ class OrderedProduct {
 
   OrderedProduct(this.product, this.quantity);
 }
+
