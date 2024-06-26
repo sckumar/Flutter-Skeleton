@@ -334,3 +334,4 @@ class Product {
 
   Product(this.name, this.image, this.description, this.price, {this.quantity = 1});
 }
+
