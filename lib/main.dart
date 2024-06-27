@@ -1,3 +1,4 @@
+import 'package:DCX/apptheme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,10 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: myTheme,
       home: LoginPage(),
     );
   }
@@ -29,11 +27,14 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(decoration: InputDecoration(labelText: 'Username')),
-            TextField(decoration: InputDecoration(labelText: 'Password'), obscureText: true),
+            TextField(
+                decoration: InputDecoration(labelText: 'Password'),
+                obscureText: true),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductListPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProductListPage()));
               },
               child: Text('Login'),
             ),
@@ -50,7 +51,26 @@ class LoginPage extends StatelessWidget {
 
 class ProductListPage extends StatelessWidget {
   final List<Product> products = [
-    Product(name: 'Product 1', description: 'This is product 1', imageUrl: 'https://via.placeholder.com/150', price: 10.0),
+    Product(
+        name: 'Product 1',
+        description: 'This is product 1',
+        imageUrl: 'assets/1.jpg',
+        price: 10.0),
+    Product(
+        name: 'Product 2',
+        description: 'This is product 1',
+        imageUrl: 'assets/2.jpg',
+        price: 10.0),
+    Product(
+        name: 'Product 3',
+        description: 'This is product 1',
+        imageUrl: 'assets/3.jpg',
+        price: 10.0),
+    Product(
+        name: 'Product 4',
+        description: 'This is product 1',
+        imageUrl: 'assets/4.jpg',
+        price: 10.0),
     // Add more products here
   ];
 
@@ -63,7 +83,7 @@ class ProductListPage extends StatelessWidget {
         itemBuilder: (context, index) {
           final product = products[index];
           return ListTile(
-            leading: Image.network(product.imageUrl),
+            leading: Image.asset(product.imageUrl),
             title: Text(product.name),
             subtitle: Text(product.description),
             trailing: ElevatedButton(
@@ -75,7 +95,8 @@ class ProductListPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProductDetailsPage(product: product)),
+                MaterialPageRoute(
+                    builder: (context) => ProductDetailsPage(product: product)),
               );
             },
           );
@@ -96,10 +117,12 @@ class ProductDetailsPage extends StatelessWidget {
       appBar: AppBar(title: Text(product.name)),
       body: Column(
         children: [
-          Image.network(product.imageUrl),
-          Text(product.name, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+          Image.asset(product.imageUrl),
+          Text(product.name,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           Text(product.description),
-          Text('\$${product.price.toStringAsFixed(2)}', style: TextStyle(fontSize: 20)),
+          Text('\$${product.price.toStringAsFixed(2)}',
+              style: TextStyle(fontSize: 20)),
           ElevatedButton(
             onPressed: () {
               // Add to cart functionality
@@ -115,7 +138,13 @@ class ProductDetailsPage extends StatelessWidget {
 class ShoppingCartPage extends StatelessWidget {
   // This should be a stateful widget in a real app to handle state changes
   final List<CartItem> cartItems = [
-    CartItem(product: Product(name: 'Product 1', description: 'This is product 1', imageUrl: 'https://via.placeholder.com/150', price: 10.0), quantity: 1),
+    CartItem(
+        product: Product(
+            name: 'Product 1',
+            description: 'This is product 1',
+            imageUrl: 'https://via.placeholder.com/150',
+            price: 10.0),
+        quantity: 1),
     // Add more cart items here
   ];
 
@@ -131,7 +160,8 @@ class ShoppingCartPage extends StatelessWidget {
             leading: Image.network(cartItem.product.imageUrl),
             title: Text(cartItem.product.name),
             subtitle: Text('Quantity: ${cartItem.quantity}'),
-            trailing: Text('\$${(cartItem.product.price * cartItem.quantity).toStringAsFixed(2)}'),
+            trailing: Text(
+                '\$${(cartItem.product.price * cartItem.quantity).toStringAsFixed(2)}'),
             onTap: () {
               // Remove from cart functionality
             },
@@ -140,7 +170,8 @@ class ShoppingCartPage extends StatelessWidget {
       ),
       bottomNavigationBar: ElevatedButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => CheckoutPage()));
         },
         child: Text('Proceed to Checkout'),
       ),
@@ -160,7 +191,10 @@ class CheckoutPage extends StatelessWidget {
           // Payment method selection
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmationPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => OrderConfirmationPage()));
             },
             child: Text('Place Order'),
           ),
@@ -177,7 +211,8 @@ class OrderConfirmationPage extends StatelessWidget {
       appBar: AppBar(title: Text('Order Confirmation')),
       body: Column(
         children: [
-          Text('Thank you for your order!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+          Text('Thank you for your order!',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           // Display order details
         ],
       ),
@@ -196,13 +231,16 @@ class AccountCreationPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(decoration: InputDecoration(labelText: 'Username')),
-            TextField(decoration: InputDecoration(labelText: 'Password'), obscureText: true),
+            TextField(
+                decoration: InputDecoration(labelText: 'Password'),
+                obscureText: true),
             TextField(decoration: InputDecoration(labelText: 'Email')),
             TextField(decoration: InputDecoration(labelText: 'Name')),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProductListPage()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => ProductListPage()));
               },
               child: Text('Create Account'),
             ),
@@ -247,7 +285,11 @@ class Product {
   final String imageUrl;
   final double price;
 
-  Product({required this.name, required this.description, required this.imageUrl, required this.price});
+  Product(
+      {required this.name,
+      required this.description,
+      required this.imageUrl,
+      required this.price});
 }
 
 class CartItem {
