@@ -1,102 +1,127 @@
-import 'package:DCX/apptheme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyWeatherApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyWeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: myTheme,
-      home: LoginPage(),
+      title: 'Weather App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: HomePage(),
     );
   }
 }
 
-class LoginPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(decoration: InputDecoration(labelText: 'Username')),
-            TextField(
-                decoration: InputDecoration(labelText: 'Password'),
-                obscureText: true),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProductListPage()));
+      appBar: AppBar(
+        title: Text('Weather App'),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onSubmitted: (value) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SearchResultsPage(searchQuery: value),
+                  ),
+                );
               },
-              child: Text('Login'),
+              decoration: InputDecoration(
+                labelText: 'Search for a location',
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.search),
+              ),
             ),
-            TextButton(
-              onPressed: () {},
-              child: Text('Forgot Password?'),
+          ),
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('27°C', style: TextStyle(fontSize: 48)),
+                  Text('Sunny', style: TextStyle(fontSize: 24)),
+                  Text('Your Location', style: TextStyle(fontSize: 18)),
+                  // Mock forecast data
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          Text('Mon'),
+                          Icon(Icons.wb_sunny),
+                          Text('29°C'),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text('Tue'),
+                          Icon(Icons.wb_cloudy),
+                          Text('24°C'),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text('Wed'),
+                          Icon(Icons.wb_sunny),
+                          Text('30°C'),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class ProductListPage extends StatelessWidget {
-  final List<Product> products = [
-    Product(
-        name: 'Product 1',
-        description: 'This is product 1',
-        imageUrl: 'assets/1.jpg',
-        price: 10.0),
-    Product(
-        name: 'Product 2',
-        description: 'This is product 1',
-        imageUrl: 'assets/2.jpg',
-        price: 10.0),
-    Product(
-        name: 'Product 3',
-        description: 'This is product 1',
-        imageUrl: 'assets/3.jpg',
-        price: 10.0),
-    Product(
-        name: 'Product 4',
-        description: 'This is product 1',
-        imageUrl: 'assets/4.jpg',
-        price: 10.0),
-    // Add more products here
-  ];
+class SearchResultsPage extends StatelessWidget {
+  final String searchQuery;
+
+  SearchResultsPage({required this.searchQuery});
 
   @override
   Widget build(BuildContext context) {
+    // Mock search results data
+    final searchResults = [
+      {'location': 'New York', 'temperature': '22°C', 'condition': 'Cloudy'},
+      {'location': 'London', 'temperature': '18°C', 'condition': 'Rainy'},
+      {'location': 'Sydney', 'temperature': '25°C', 'condition': 'Sunny'},
+    ];
+
     return Scaffold(
-      appBar: AppBar(title: Text('Product List')),
+      appBar: AppBar(
+        title: Text('Search Results'),
+      ),
       body: ListView.builder(
-        itemCount: products.length,
+        itemCount: searchResults.length,
         itemBuilder: (context, index) {
-          final product = products[index];
           return ListTile(
-            leading: Image.asset(product.imageUrl),
-            title: Text(product.name),
-            subtitle: Text(product.description),
-            trailing: ElevatedButton(
-              onPressed: () {
-                // Add to cart functionality
-              },
-              child: Text('Add to Cart'),
-            ),
+            title: Text(searchResults[index]['location']!),
+            subtitle: Text(searchResults[index]['condition']!),
+            trailing: Text(searchResults[index]['temperature']!),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ProductDetailsPage(product: product)),
+                  builder: (context) => LocationDetailsPage(location: searchResults[index]['location']!),
+                ),
               );
             },
           );
@@ -106,195 +131,63 @@ class ProductListPage extends StatelessWidget {
   }
 }
 
-class ProductDetailsPage extends StatelessWidget {
-  final Product product;
+class LocationDetailsPage extends StatelessWidget {
+  final String location;
 
-  ProductDetailsPage({required this.product});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(product.name)),
-      body: Column(
-        children: [
-          Image.asset(product.imageUrl),
-          Text(product.name,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-          Text(product.description),
-          Text('\$${product.price.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 20)),
-          ElevatedButton(
-            onPressed: () {
-              // Add to cart functionality
-            },
-            child: Text('Add to Cart'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ShoppingCartPage extends StatelessWidget {
-  // This should be a stateful widget in a real app to handle state changes
-  final List<CartItem> cartItems = [
-    CartItem(
-        product: Product(
-            name: 'Product 1',
-            description: 'This is product 1',
-            imageUrl: 'https://via.placeholder.com/150',
-            price: 10.0),
-        quantity: 1),
-    // Add more cart items here
-  ];
+  LocationDetailsPage({required this.location});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Shopping Cart')),
-      body: ListView.builder(
-        itemCount: cartItems.length,
-        itemBuilder: (context, index) {
-          final cartItem = cartItems[index];
-          return ListTile(
-            leading: Image.network(cartItem.product.imageUrl),
-            title: Text(cartItem.product.name),
-            subtitle: Text('Quantity: ${cartItem.quantity}'),
-            trailing: Text(
-                '\$${(cartItem.product.price * cartItem.quantity).toStringAsFixed(2)}'),
-            onTap: () {
-              // Remove from cart functionality
-            },
-          );
-        },
-      ),
-      bottomNavigationBar: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CheckoutPage()));
-        },
-        child: Text('Proceed to Checkout'),
-      ),
-    );
-  }
-}
+    // Mock detailed weather data
+    final weatherDetails = {
+      'temperature': '22°C',
+      'condition': 'Cloudy',
+      'windSpeed': '10 km/h',
+      'humidity': '75%',
+      'forecast': [
+        {'day': 'Thu', 'condition': 'Sunny', 'temperature': '26°C'},
+        {'day': 'Fri', 'condition': 'Rainy', 'temperature': '20°C'},
+        {'day': 'Sat', 'condition': 'Cloudy', 'temperature': '22°C'},
+      ],
+    };
 
-class CheckoutPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Checkout')),
-      body: Column(
-        children: [
-          // User details form
-          // Order summary
-          // Payment method selection
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => OrderConfirmationPage()));
-            },
-            child: Text('Place Order'),
-          ),
-        ],
+      appBar: AppBar(
+        title: Text(location),
       ),
-    );
-  }
-}
-
-class OrderConfirmationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Order Confirmation')),
-      body: Column(
-        children: [
-          Text('Thank you for your order!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-          // Display order details
-        ],
-      ),
-    );
-  }
-}
-
-class AccountCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Create Account')),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(decoration: InputDecoration(labelText: 'Username')),
-            TextField(
-                decoration: InputDecoration(labelText: 'Password'),
-                obscureText: true),
-            TextField(decoration: InputDecoration(labelText: 'Email')),
-            TextField(decoration: InputDecoration(labelText: 'Name')),
+            Text(weatherDetails['temperature']!, style: TextStyle(fontSize: 48)),
+            Text(weatherDetails['condition']!, style: TextStyle(fontSize: 24)),
+           Text('Wind: ${weatherDetails['windSpeed']}', style: TextStyle(fontSize: 18)),
+            Text('Humidity: ${weatherDetails['humidity']}', style: TextStyle(fontSize: 18)),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => ProductListPage()));
-              },
-              child: Text('Create Account'),
+            Text('Forecast for the next days:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            Expanded(
+              child: ListView.builder(
+                itemCount: weatherDetails['forecast']!.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(weatherDetails['forecast']![index]['day']!),
+                    trailing: Text(weatherDetails['forecast']![index]['temperature']!),
+                    leading: Icon(
+                      weatherDetails['forecast']![index]['condition'] == 'Sunny'
+                          ? Icons.wb_sunny
+                          : weatherDetails['forecast']![index]['condition'] == 'Rainy'
+                              ? Icons.beach_access
+                              : Icons.wb_cloudy,
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
       ),
     );
   }
-}
-
-class AdminProductCreationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Create Product')),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(decoration: InputDecoration(labelText: 'Product Name')),
-            // Image upload functionality would go here
-            TextField(decoration: InputDecoration(labelText: 'Description')),
-            TextField(decoration: InputDecoration(labelText: 'Price')),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Create product functionality
-              },
-              child: Text('Create Product'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Product {
-  final String name;
-  final String description;
-  final String imageUrl;
-  final double price;
-
-  Product(
-      {required this.name,
-      required this.description,
-      required this.imageUrl,
-      required this.price});
-}
-
-class CartItem {
-  final Product product;
-  int quantity;
-
-  CartItem({required this.product, required this.quantity});
 }
